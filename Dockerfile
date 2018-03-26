@@ -17,23 +17,23 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
 	rm -f /lib/systemd/system/basic.target.wants/*;\
 	rm -f /lib/systemd/system/anaconda.target.wants/*;
 
-VOLUME [ "/sys/fs/cgroup", "/named" ]
+#VOLUME [ "/sys/fs/cgroup", "/named" ]
 
-CMD ["/usr/sbin/init"]
+#CMD ["/usr/sbin/init"]
 
 
-EXPOSE 80
-ADD run-httpd.sh /run-httpd.sh
-RUN chmod -v +x /run-httpd.sh
-CMD ["/run-httpd.sh"]
+#EXPOSE 80
+#ADD run-httpd.sh /run-httpd.sh
+#RUN chmod -v +x /run-httpd.sh
+#CMD ["/run-httpd.sh"]
 
-ADD container-image-root /
+#ADD container-image-root /
 
-RUN rndc-confgen -a -c /etc/rndc.key && \
+#RUN rndc-confgen -a -c /etc/rndc.key && \
     chown named:named /etc/rndc.key && \
     chmod 755 /entrypoint.sh
-RUN chmod -v +x /entrypoint.sh
+#RUN chmod -v +x /entrypoint.sh
 
-EXPOSE 53/udp 53/tcp
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["/usr/sbin/named"]
+#EXPOSE 53/udp 53/tcp
+#ENTRYPOINT ["/entrypoint.sh"]
+#CMD ["/usr/sbin/named"]
