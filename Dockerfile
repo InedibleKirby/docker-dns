@@ -30,8 +30,8 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
 #ADD container-image-root /
 
 #RUN rndc-confgen -a -c /etc/rndc.key && \
-    chown named:named /etc/rndc.key && \
-    chmod 755 /entrypoint.sh
+#    chown named:named /etc/rndc.key && \
+#    chmod 755 /entrypoint.sh
 #RUN chmod -v +x /entrypoint.sh
 
 #EXPOSE 53/udp 53/tcp
