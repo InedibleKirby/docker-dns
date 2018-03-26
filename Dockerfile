@@ -15,7 +15,6 @@ RUN yum -y --setopt=tsflags=nodocs update && \
     yum -y --setopt=tsflags=nodocs install httpd && \
 	yum -y install bind-utils bind && \
     yum clean all; systemctl enable httpd.service
-EXPOSE 80
 CMD ["/usr/sbin/init"]
 
 ADD container-image-root /
@@ -24,7 +23,7 @@ RUN rndc-confgen -a -c /etc/rndc.key && \
     chown named:named /etc/rndc.key && \
     chmod 755 /entrypoint.sh
 
-EXPOSE 53/udp 53/tcp
+EXPOSE 53/udp 53/tcp 80
 VOLUME [ "/named" ]
 #ENTRYPOINT ["/entrypoint.sh"]
 #CMD ["/usr/sbin/named"]
