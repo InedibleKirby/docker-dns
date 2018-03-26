@@ -15,7 +15,6 @@ RUN yum -y --setopt=tsflags=nodocs update && \
     yum -y --setopt=tsflags=nodocs install httpd && \
 	yum -y install bind-utils bind && \
     yum clean all; systemctl enable httpd.service
-CMD ["/usr/sbin/init"]
 
 ADD container-image-root /
 
