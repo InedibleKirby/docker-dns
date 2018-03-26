@@ -5,7 +5,7 @@ ENV container docker
 
 RUN yum -y --setopt=tsflags=nodocs update && \
     yum -y --setopt=tsflags=nodocs install httpd && \
-	yum -y install bind-utils bind && \
+    yum -y install bind-utils bind && \
     yum clean all
 	
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
