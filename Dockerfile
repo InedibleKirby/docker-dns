@@ -19,7 +19,6 @@ EXPOSE 80
 CMD ["/usr/sbin/init"]
 
 ADD container-image-root /
-COPY entrypoint.sh /entrypoint.sh
 
 RUN rndc-confgen -a -c /etc/rndc.key && \
     chown named:named /etc/rndc.key && \
